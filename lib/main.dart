@@ -3,7 +3,7 @@ import 'input_page.dart';
 
 void main() => runApp(BMICalculator());
 
-// This Stateless Widget contains the  MaterialApp theme.
+/// This Stateless Widget contains the  MaterialApp theme.
 class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
