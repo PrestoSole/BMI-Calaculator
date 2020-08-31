@@ -43,6 +43,11 @@ class _InputPageState extends State<InputPage> {
                       icon: FontAwesomeIcons.mars,
                       label: 'Male',
                     ),
+                    onPress: () {
+                      setState(() {
+                        selectedGender = GenderType.male;
+                      });
+                    },
                   ),
                 ),
                 Expanded(
@@ -54,6 +59,11 @@ class _InputPageState extends State<InputPage> {
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
                     ),
+                    onPress: () {
+                      setState(() {
+                        selectedGender = GenderType.female;
+                      });
+                    },
                   ),
                 ),
               ],
