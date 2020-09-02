@@ -36,7 +36,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    selectedGender == GenderType.male
+                    color: selectedGender == GenderType.male
                         ? activeCardColor
                         : inactiveCardColor,
                     cardChild: IconContent(
@@ -52,7 +52,7 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
-                    selectedGender == GenderType.female
+                    color: selectedGender == GenderType.female
                         ? activeCardColor
                         : inactiveCardColor,
                     cardChild: IconContent(
@@ -71,7 +71,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              inactiveCardColor,
+              color: inactiveCardColor,
             ),
           ),
           Expanded(
@@ -79,12 +79,12 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    inactiveCardColor,
+                    color: inactiveCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    inactiveCardColor,
+                    color: inactiveCardColor,
                   ),
                 ),
               ],
