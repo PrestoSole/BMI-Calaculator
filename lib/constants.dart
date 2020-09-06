@@ -4,8 +4,8 @@ const Color kActiveCardColor = Color(0xFF1D1E33);
 const Color kInactiveCardColor = Color(0xFF111328);
 const Color kButtomContaierColor = Color(0xFFEB1555);
 const double kButtomContainerHeight = 80;
-const double kMinHeightNumber = 60.0;
-const double kMaxHeightNumber = 195.0;
+const double kMinHeightNumber = 0.0;
+const double kMaxHeightNumber = 200.0;
 
 const kLabelTextStyle = TextStyle(
   fontSize: 18,
