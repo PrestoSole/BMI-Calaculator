@@ -6,6 +6,8 @@ import 'reusable_card.dart';
 import 'round_icon_button.dart';
 import 'constants.dart';
 import 'results_page.dart';
+import 'reusable_column.dart';
+import 'package:quantities/quantities.dart';
 
 enum GenderType {
   male,
@@ -122,84 +124,46 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     color: kInactiveCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'WEIGHT',
-                          style: kLabelTextStyle,
-                        ),
-                        Text(
-                          weight.toString(),
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                    cardChild: ReusableColumn(
+                      text: 'WEIGHT',
+                      value: weight,
+                      unit: "kg",
+                      onPressed_minus: () {
+                        if (weight > 0) {
+                          setState(() {
+                            weight--;
+                          });
+                        }
+                        ;
+                      },
+                      onPressed_plus: () {
+                        setState(() {
+                          weight++;
+                        });
+                      },
                     ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     color: kInactiveCardColor,
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'AGE',
-                          style: kLabelTextStyle,
-                        ),
-                        Text(
-                          age.toString(),
-                          style: kNumberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPressed: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                    cardChild: ReusableColumn(
+                      text: 'AGE',
+                      value: age,
+                      unit: 'yr',
+                      onPressed_plus: () {
+                        setState(() {
+                          age++;
+                        });
+                      },
+                      onPressed_minus: () {
+                        if (age > 0) {
+                          setState(() {
+                            age--;
+                          });
+                        }
+                        ;
+                      },
                     ),
                   ),
                 ),
