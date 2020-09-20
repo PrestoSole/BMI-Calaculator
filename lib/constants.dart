@@ -7,12 +7,12 @@ const double kButtomContainerHeight = 80;
 const double kMinHeightNumber = 0.0;
 const double kMaxHeightNumber = 200.0;
 
-const kLabelTextStyle = TextStyle(
+const TextStyle kLabelTextStyle = TextStyle(
   fontSize: 18,
   color: Color(0xFF8D8E98),
 );
 
-const kNumberTextStyle = TextStyle(
-  fontSize: 50.0,
+const TextStyle kNumberTextStyle = TextStyle(
+  fontSize: 40,
   fontWeight: FontWeight.w900,
 );

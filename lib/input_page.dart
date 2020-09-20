@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'round_icon_button.dart';
+
 import 'constants.dart';
+import 'icon_content.dart';
 import 'results_page.dart';
+import 'reusable_card.dart';
 import 'reusable_column.dart';
-import 'package:quantities/quantities.dart';
 
 enum GenderType {
   male,
@@ -36,6 +35,7 @@ class _InputPageState extends State<InputPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
+            flex: 2,
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -43,9 +43,9 @@ class _InputPageState extends State<InputPage> {
                     color: selectedGender == GenderType.male
                         ? kActiveCardColor
                         : kInactiveCardColor,
-                    cardChild: IconContent(
+                    cardChild: const IconContent(
                       icon: FontAwesomeIcons.mars,
-                      label: 'Male',
+                      label: 'MALE',
                     ),
                     onPress: () {
                       setState(() {
@@ -59,7 +59,7 @@ class _InputPageState extends State<InputPage> {
                     color: selectedGender == GenderType.female
                         ? kActiveCardColor
                         : kInactiveCardColor,
-                    cardChild: IconContent(
+                    cardChild: const IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
                     ),
@@ -74,51 +74,63 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
+            flex: 2,
             child: ReusableCard(
               color: kInactiveCardColor,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'HEIGHT',
-                    style: kLabelTextStyle,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      Text(
-                        height.toString(),
-                        style: kNumberTextStyle,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'cm',
+                children: <Widget>[
+                  const Expanded(
+                    child: Center(
+                      child: Text(
+                        'HEIGHT',
                         style: kLabelTextStyle,
                       ),
-                    ],
+                    ),
                   ),
-                  Slider(
-                    value: height.toDouble(),
-                    min: kMinHeightNumber,
-                    max: kMaxHeightNumber,
-                    activeColor: Color(0xFFEB1555),
-                    inactiveColor: Color(0xFF8D8E98),
-                    onChanged: (double newValue) {
-                      setState(() {
-                        height = newValue.round();
-                      });
-                      ;
-                    },
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            height.toString(),
+                            style: kNumberTextStyle,
+                          ),
+                        ),
+                        const Center(
+                          child: Text(
+                            'cm',
+                            style: kLabelTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: Slider(
+                        value: height.toDouble(),
+                        min: kMinHeightNumber,
+                        max: kMaxHeightNumber,
+                        activeColor: const Color(0xFFEB1555),
+                        inactiveColor: const Color(0xFF8D8E98),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
           Expanded(
+            flex: 2,
             child: Row(
               children: <Widget>[
                 Expanded(
@@ -126,21 +138,8 @@ class _InputPageState extends State<InputPage> {
                     color: kInactiveCardColor,
                     cardChild: ReusableColumn(
                       text: 'WEIGHT',
-                      value: weight,
-                      unit: "kg",
-                      onPressed_minus: () {
-                        if (weight > 0) {
-                          setState(() {
-                            weight--;
-                          });
-                        }
-                        ;
-                      },
-                      onPressed_plus: () {
-                        setState(() {
-                          weight++;
-                        });
-                      },
+                      property: weight.toString(),
+                      unit: 'kg',
                     ),
                   ),
                 ),
@@ -149,42 +148,36 @@ class _InputPageState extends State<InputPage> {
                     color: kInactiveCardColor,
                     cardChild: ReusableColumn(
                       text: 'AGE',
-                      value: age,
+                      property: age.toString(),
                       unit: 'yr',
-                      onPressed_plus: () {
-                        setState(() {
-                          age++;
-                        });
-                      },
-                      onPressed_minus: () {
-                        if (age > 0) {
-                          setState(() {
-                            age--;
-                          });
-                        }
-                        ;
-                      },
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsPage()));
-            },
-            child: Container(
-              width: double.infinity,
-              margin: const EdgeInsets.all(15),
-              height: kButtomContainerHeight,
-              color: kButtomContaierColor,
-              child: Center(
-                  child: Text(
-                'Calculate Your BMI',
-                style: TextStyle(fontSize: 25),
-              )),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => ResultsPage()));
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: kButtomContaierColor,
+                ),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                child: const Center(
+                    child: Text(
+                  'Calculate Your BMI',
+                  style: TextStyle(fontSize: 25),
+                )),
+              ),
             ),
           ),
         ],

@@ -5,11 +5,9 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text('BMI CALCULATOR'),
-        ),
+        title: const Text('BMI CALCULATOR'),
       ),
-      body: Text('Hello'),
+      body: const Text('Hello'),
     );
   }
 }

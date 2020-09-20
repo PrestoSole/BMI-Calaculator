@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({this.icon, this.label});
+  const IconContent({this.icon, this.label});
 
   final IconData icon;
   final String label;
@@ -11,17 +11,30 @@ class IconContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          size: 80.0,
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            child: FittedBox(
+              child: Center(
+                child: Icon(
+                  icon,
+                ),
+              ),
+            ),
+          ),
         ),
-        SizedBox(
-          height: 15,
-        ),
-        Text(
-          label,
-          style: kLabelTextStyle,
+        Expanded(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+              child: Text(
+                label,
+                style: kLabelTextStyle,
+              ),
+            ),
+          ),
         ),
       ],
     );
